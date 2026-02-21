@@ -46,17 +46,9 @@ struct OpenClawChatComposer: View {
 
             #if os(macOS)
             if self.style == .standard {
-                let shape = UnevenRoundedRectangle(
-                    cornerRadii: RectangleCornerRadii(
-                        topLeading: 0,
-                        bottomLeading: cornerRadius,
-                        bottomTrailing: cornerRadius,
-                        topTrailing: 0),
-                    style: .continuous)
-                shape
-                    .fill(OpenClawChatTheme.composerBackground)
-                    .overlay(shape.strokeBorder(OpenClawChatTheme.composerBorder, lineWidth: 1))
-                    .shadow(color: .black.opacity(0.12), radius: 12, y: 6)
+                // Standard macOS chat already has a framed editor surface below.
+                // Keep only that surface to avoid stacked card borders.
+                Color.clear
             } else {
                 let shape = RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 shape
